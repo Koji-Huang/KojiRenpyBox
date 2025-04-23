@@ -106,8 +106,6 @@ class PressImageButton(renpy.display.behavior.ImageButton):
             renpy.redraw(self, 0)
 
         elif ev.type == pygame.MOUSEBUTTONDOWN and is_in_range:
-            print(ev.__dict__)
-            
             if self.press_sound is not None:
                 renpy.music.play(self.press_sound, channel=self.press_sound_channel)
 
@@ -119,12 +117,6 @@ class PressImageButton(renpy.display.behavior.ImageButton):
             renpy.redraw(self, 0)
 
         return super(PressImageButton, self).event(ev, x, y, st)
-
-
-    # def render(self, w, h, st, at):
-    #     renpy.redraw(self, 0)
-    #     print(st, at)
-    #     return super().render(w, h, st, at)
 
 
     def get_child(self):

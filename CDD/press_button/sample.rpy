@@ -1,7 +1,11 @@
 
-screen test:
+screen sample_press:
     pressbutton:
-        idle Text("还没有按下噢")
-        hover Text("你挡住我了!")
-        press Text("在按着了----")
+        idle Text("Idle")
+        hover Text("Hovering")
+        press Text("Pressing")
+        
+        press_sound None
+
+        action NullAction()
         align (0.5, 0.5)

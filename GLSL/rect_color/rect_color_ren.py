@@ -1,4 +1,10 @@
-renpy.register_shader("fade_label",
+"""renpy
+
+init python:
+"""
+
+
+renpy.register_shader("rect_color",
     variables = """
         uniform vec4 u_left_top;
         uniform vec4 u_left_buttom;
@@ -17,14 +23,18 @@ renpy.register_shader("fade_label",
     """
 )
 
-class FadeLabel(renpy.Displayable):
-    def __init__(self, color = ("#fff", "#fff", "#0000", "0000")):
+class RectColor(renpy.Displayable):
+    def __init__(self, *color):
         super().__init__()
         self.model = Model()
-        self.model.shader("fade_label")
+        self.model.shader("rect_color")
+
+        if bool(color) is False:
+            color = ("#fff", "#0000", "#fff", "0000")
+
         self.model.uniform("u_left_top", Color(color[0]).rgba)
-        self.model.uniform("u_left_buttom", Color(color[1]).rgba)
-        self.model.uniform("u_right_top", Color(color[2]).rgba)
+        self.model.uniform("u_right_top", Color(color[1]).rgba)
+        self.model.uniform("u_left_buttom", Color(color[2]).rgba)
         self.model.uniform("u_right_buttom", Color(color[3]).rgba)
         self.model.texture(Null())
     

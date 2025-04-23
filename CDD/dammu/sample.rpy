@@ -47,7 +47,7 @@ init python:
 default dammu_display = DammuDisplay()
 
 
-screen test:
+screen sample_dammu:
     add dammu_display
 
     timer 0.06 action Function(add_dammu_to_display, dammu_display, _update_screens=False) repeat True
