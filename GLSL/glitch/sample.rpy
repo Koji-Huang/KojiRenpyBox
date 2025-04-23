@@ -112,14 +112,14 @@ define rem = Character("Rem")
 label sample_glitch_transform:
     show rem at center
     with glitch
-    e "中?"
+    rem "中"
 
     show rem at left
     with glitch
-    e "左"
+    rem "左"
 
     show rem at right
     with glitch
-    e "右"
+    rem "右"
 
     return
