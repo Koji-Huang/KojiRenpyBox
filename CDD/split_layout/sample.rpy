@@ -1,5 +1,5 @@
 
-screen test:
+screen sample_split:
     split:
         default_percent 0.4
 

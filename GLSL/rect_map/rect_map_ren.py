@@ -1,3 +1,8 @@
+"""renpy
+
+init python:
+"""
+
 renpy.register_shader("rect_map",
     variables = """
         attribute vec4 a_position;
