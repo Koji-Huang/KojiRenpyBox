@@ -4,6 +4,8 @@
 
 科基的个人 Renpy 组件仓库, 希望里面的组件能对你的开发提供一些帮助什么的, 对这些组件的使用有疑问或者希望我帮你写组件可以发邮件至 koji233@163.com
 
+演示视频: https://www.bilibili.com/video/BV1cWLtzvE3p/
+
 Koji's Renpy Widget Repositories. Hope these widget can give you some help, if there is some question or wish I write widget for you, send email to koji233@163.com
 
 ---
