@@ -1,0 +1,6 @@
+"""renpy
+
+python early:
+"""
+
+pass
