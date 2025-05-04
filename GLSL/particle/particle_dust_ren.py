@@ -8,7 +8,7 @@ def mix(a, b, k):
 
 
 class ParticleDust(renpy.Displayable):
-    def __init__(self, image, mask, speed=1.0, center=None, lock=True):
+    def __init__(self, image, speed=1.0, center=None, lock=True):
         super().__init__()
         self.speed = speed
         self.center = center
@@ -18,7 +18,12 @@ class ParticleDust(renpy.Displayable):
         self.dust = DustLayer(image)
 
         # 3层粒子层
-        self.particle = tuple(ParticleLayer(mask, image, randint=i, speed=1.0+i/5) for i in range(3))
+        # self.particle = tuple(ParticleLayer(mask, image, randint=i, speed=1.0+i/5) for i in range(3))
+        self.particle = (
+            ParticleLayer("tex0.png", image, randint=100, speed=1.0, percent=0.8, mask_range=(0.2, 0.95)),
+            ParticleLayer("tex1.png", image, randint=200, speed=1.1, percent=0.8, mask_range=(0.0, 1.0)),
+            ParticleLayer("tex2.png", image, randint=300, speed=1.2, percent=0.4, mask_range=(0.3, 0.75)),
+            )
 
     def render(self, w, h, st, at):
         # lock 的话超出时间轴的画面不播放
