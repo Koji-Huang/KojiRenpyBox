@@ -21,6 +21,9 @@ renpy.register_shader("particle",
         uniform float u_randint;
         uniform vec4 u_col;
         uniform vec2 u_center;
+        uniform vec2 u_speed;
+        uniform vec2 u_range;
+        uniform vec2 u_weight;
         
         uniform float u_has_second_tex;
     """,
@@ -40,19 +43,23 @@ renpy.register_shader("particle",
 
         float convert_percent(float val, float percent){ return (val>percent)?(val-percent) / (1.0 - percent):0.0;}
 
-        vec4 render_per_time(float time, float percent, vec2 center, float randint, float lod_bias, vec2 uv, float enable_color_tex, sampler2D mask_tex, sampler2D color_tex){
+        vec4 render_per_time(float time, float percent, vec2 center, float randint, float lod_bias, vec2 uv, vec2 speed, vec2 weight, vec2 range, float enable_color_tex, sampler2D mask_tex, sampler2D color_tex){
 
             percent = percent + (1.0 - percent) * abs(time - 0.5) * 2;
         
-            vec2 new_uv = get_origin_pos(uv, (uv - center) / 1.2, offset_func(uv, randint, time), time);
+            vec2 new_uv = get_origin_pos(uv, (uv - center) * weight.x, offset_func(uv, randint, time * speed.y) * weight.y, time * speed.x);
+
+            if(new_uv.x < 0.0 || new_uv.x > 1.0 || new_uv.y < 0.0 || new_uv.y > 1.0) return vec4(0.0, 0.0, 0.0, 0.0);
             
             float col = texture2D(mask_tex, new_uv, lod_bias).r;
 
-            float weight = convert_percent(col, percent);
+            col = (col - range.x) / (range.y - range.x);
 
-            if(weight != 0.0) 
-                if(enable_color_tex < 0.5) return vec4(weight, weight, weight, 1.0);
-                else return texture2D(color_tex, new_uv, lod_bias) * weight;
+            float result = convert_percent(col, percent);
+
+            if(result != 0.0) 
+                if(enable_color_tex < 0.5) return vec4(result, result, result, 1.0);
+                else return texture2D(color_tex, new_uv, lod_bias) * result;
 
             return vec4(0.0, 0.0, 0.0, 0.0);
 
@@ -65,19 +72,19 @@ renpy.register_shader("particle",
         if(u_anima_time > 0.0){
             float time = fract(u_anima_time);
             float randint = u_randint + ceil(u_anima_time);
-            gl_FragColor = render_per_time(time, percent, u_center, randint, u_lod_bias, v_uv, u_has_second_tex, tex0, tex1);
+            gl_FragColor = render_per_time(time, percent, u_center, randint, u_lod_bias, v_uv, u_speed, u_weight, u_range, u_has_second_tex, tex0, tex1);
             }
 
         if(u_anima_time > 0.3){
             float time = fract(u_anima_time - 0.3);
-            float randint = u_randint + ceil(u_anima_time - 0.3);
-            gl_FragColor += render_per_time(time, percent, u_center, randint, u_lod_bias, v_uv, u_has_second_tex, tex0, tex1);
+            float randint = u_randint + ceil(u_anima_time - 0.3) + 5;
+            gl_FragColor += render_per_time(time, percent, u_center, randint, u_lod_bias, v_uv, u_speed, u_weight, u_range, u_has_second_tex, tex0, tex1);
             }
 
         if(u_anima_time > 0.6){
             float time = fract(u_anima_time - 0.6);
-            float randint = u_randint + ceil(u_anima_time - 0.6);
-            gl_FragColor += render_per_time(time, percent, u_center, randint, u_lod_bias, v_uv, u_has_second_tex, tex0, tex1);
+            float randint = u_randint + ceil(u_anima_time - 0.6) + 10;
+            gl_FragColor += render_per_time(time, percent, u_center, randint, u_lod_bias, v_uv, u_speed, u_weight, u_range, u_has_second_tex, tex0, tex1);
             }
         
         if(u_has_second_tex < 0.5)
@@ -87,15 +94,34 @@ renpy.register_shader("particle",
 
 
 class ParticleLayer(renpy.Displayable):
-    def __init__(self, mask, obj=None, percent=0.7, randint=116, center=(0.5, 0.5), speed=1.0, color=(1.0, 1.0, 1.0, 0.0), *args, **kwargs):
+    def __init__(
+            self, 
+            mask, 
+            obj=None, 
+            percent=0.7,
+            randint=116, 
+            center=(0.5, 0.5), 
+            mask_range=(0.0, 1.0), 
+            vector_speed=(1.0, 1.0), 
+            vector_weight=(1.0, 1.0), 
+            color=(1.0, 0.9, 0.5, 0.0), 
+
+            speed=0.3, 
+            delay=0.0,
+
+            *args, 
+            **kwargs):
+
         """
-        @param mask: 粒子分布的权重图像
-        @param obj: 粒子的纹理图像, 不存在时默认使用 color, 存在时禁用 color
-        @param percent: 当一个点的权重高于 percent 时才会被绘制
-        @param randint: 随机数, 多图层叠加就用得到了
-        @param center: 粒子发射位置的中心
-        @param speed: 动画发生的速度
-        @param color: 在没有纹理图像时粒子绘制的颜色
+        :param mask: 粒子分布权重纹理
+        :param obj: 粒子着色纹理
+        :param percent: 权重临界
+        :param range: 权重的上下界
+        :param randint: 随机数种子
+        :param center: 粒子发射中心
+        :param vector_speed: 向量的速度
+        :param speed: 动画的速度
+        :praram color: 没有着色纹理下粒子的颜色
         """
 
         super().__init__(*args, **kwargs)
@@ -114,6 +140,9 @@ class ParticleLayer(renpy.Displayable):
         self.model.uniform("u_anima_during", 0.5)
         self.model.uniform("u_col", color)
         self.model.uniform("u_has_second_tex", False)
+        self.model.uniform("u_speed", vector_speed)
+        self.model.uniform("u_weight", vector_weight)
+        self.model.uniform("u_range", mask_range)
 
         if obj is not None:
             self.tex = renpy.displayable(obj)
@@ -121,13 +150,14 @@ class ParticleLayer(renpy.Displayable):
             self.model.uniform("u_has_second_tex", True)
         else:
             self.model.texture(Null())
-            
 
         self.speed = speed
+        self.delay = delay
 
     def render(self, w, h, st, at):
-        # 动画时间轴
-        anima = st*self.speed
+        if(st < self.delay): return renpy.Render(w, h)
+
+        anima = st*self.speed - self.delay
 
         size = w, h
 
@@ -145,4 +175,3 @@ class ParticleLayer(renpy.Displayable):
 
     def event(self, ev, x, y, st):
         return self.model.event(ev, x, y, st)
-
