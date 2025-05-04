@@ -46,20 +46,34 @@ Koji's Renpy Widget Repositories. Hope these widget can give you some help, if t
 >
 >   The image distortion effect of a worn-out TV. written with a transform and a function applied to CDD
 
-### 2. perspective
+### 2. particle
+
+>   粒子效果, 以及一个以图像素材变成粉末淡出的shader(其实是用 CDD 把两个 Shader 整合到一起)
+>
+>   Particle, with a image fadeout like dust shader ( but it just a cdd which mix two shader )
+
+### 3. perspective
 
 >   单点透视形变效果, 相应系统的相关插件, Debug 工具
 >
 >   Single point perspective deformation effect, addin and debug tool
 
-### 3. rect_color
+### 4. rect_color
 
 >   渐变色矩阵, 用于快速添加渐变色到屏幕上
 >
 >   Gradient color matrix, used to quickly add gradient colors to the screen
 
-### 4. rect_map
+### 5. rect_map
 
 >   网格效果, 用于添加双色网格
 >
 >   Grid effect, used to add dual color grids
+
+---
+
+## Markdown
+
+### 1. 小白都能看懂的 CDD 教程
+
+>   自己写给萌新群友康的
