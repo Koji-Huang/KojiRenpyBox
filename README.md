@@ -40,31 +40,37 @@ Koji's Renpy Widget Repositories. Hope these widget can give you some help, if t
 
 ## GLSL
 
-### 1. glitch
+### 1. cloud_node
+
+>   基于 Python 和 Shader 实现的点云图
+>
+>   Cloud Node base on Python and Shader
+
+### 2. glitch
 
 >   破旧电视机的画面形变效果, 写有一个 transform 和作用到 CDD 上的函数
 >
 >   The image distortion effect of a worn-out TV. written with a transform and a function applied to CDD
 
-### 2. particle
+### 3. particle
 
 >   粒子效果, 以及一个以图像素材变成粉末淡出的shader(其实是用 CDD 把两个 Shader 整合到一起)
 >
 >   Particle, with a image fadeout like dust shader ( but it just a cdd which mix two shader )
 
-### 3. perspective
+### 4. perspective
 
 >   单点透视形变效果, 相应系统的相关插件, Debug 工具
 >
 >   Single point perspective deformation effect, addin and debug tool
 
-### 4. rect_color
+### 5. rect_color
 
 >   渐变色矩阵, 用于快速添加渐变色到屏幕上
 >
 >   Gradient color matrix, used to quickly add gradient colors to the screen
 
-### 5. rect_map
+### 6. rect_map
 
 >   网格效果, 用于添加双色网格
 >
