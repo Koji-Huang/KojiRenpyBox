@@ -76,6 +76,12 @@ Koji's Renpy Widget Repositories. Hope these widget can give you some help, if t
 >
 >   Grid effect, used to add dual color grids
 
+### 7. uv_frame
+
+>   根据渲染好的 UV 图像来渲染图片的位置
+>
+>   Use rendered UV to render image
+
 ---
 
 ## Markdown
