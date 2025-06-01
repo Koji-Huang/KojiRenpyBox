@@ -12,25 +12,31 @@ Koji's Renpy Widget Repositories. Hope these widget can give you some help, if t
 
 ## CDD
 
-### 1. dammu
+### 1. canvas
+
+>   纯 Shader 实现的画直线, 长方形, 圆形的三个组件, 拥有圆角效果
+>
+>   pure shader render Line, Rect, Circle
+
+### 2. dammu
 
 >   非常简易的弹幕组件
 >
 >   eazy dammu widget
 
-### 2. press_buttom
+### 3. press_buttom
 
 >   在 Imagebutton 的基础上加上了一个自定义的 press 属性用来相应鼠标按下的图片
 >
 >   Base on Imagebuttton, added a custom 'press' attribute to correspond pressed by the mouse
 
-### 3. split_layout
+### 4. split_layout
 
 >   分割线容器, 此组件允许接收两个子组件并用分割线隔开, 此分割线可以自由调整
 >
 >   Split line container, this component allows receiving two sub components and separating them with a split line, which can be freely adjusted
 
-### 4. stela_button
+### 5. stela_button
 
 >   一个动画效果的 Textbutton 按钮, 并不是什么很厉害的组件
 >
