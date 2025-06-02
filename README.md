@@ -22,7 +22,7 @@ Video Collection: https://space.bilibili.com/1146352855/lists/5362589?type=seaso
 
 ## CDD
 
-### 1. [canvas (圆, 长方形, 直线)](.\CDD\canvas)
+### 1. [canvas (圆, 长方形, 直线)](./CDD/canvas)
 
 >   纯 Shader 实现的画直线, 长方形, 圆形的三个组件, 拥有圆角效果
 >
