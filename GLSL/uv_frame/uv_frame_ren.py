@@ -130,32 +130,14 @@ renpy.register_shader("uv_apply",
     fragment_300="""
         vec4 uv = vec4(0.0, 0.0, 0.0, 0.0);
 
-        switch(int(u_sample_level)){
-            case 0: 
-                uv = texture2D(tex1, v_tex_coord, u_lod_bias);
-                break;
-            case 1: 
-                uv = sample_5(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
-                break;
-            case 2: 
-                uv = sample_9(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
-                break;
-            case 3: 
-                uv = sample_circle_20(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
-                break;
-            case 4: 
-                uv = sample_circle_40(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
-                break;
-            case 5: 
-                uv = sample_circle_60(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
-                break;
-            case 6: 
-                uv = sample_circle_90(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
-                break;
-            default:
-                uv = sample_circle_20(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
-                break;
-        }
+        if(u_sample_level <= 0.0) uv = texture2D(tex1, v_tex_coord, u_lod_bias);
+        else if(u_sample_level < 1.0) uv = sample_5(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
+        else if(u_sample_level < 2.0) uv = sample_9(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
+        else if(u_sample_level < 3.0) uv = sample_circle_20(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
+        else if(u_sample_level < 4.0) uv = sample_circle_40(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
+        else if(u_sample_level < 5.0) uv = sample_circle_60(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
+        else uv = sample_circle_90(tex1, v_tex_coord, u_lod_bias, u_sample_dis); 
+
         vec4 color = texture2D(tex0, uv.xy / uv.a, 1.0);
         if(u_blend_alpha < 0.5) uv.a = texture2D(tex1, v_tex_coord, u_lod_bias).a;
         uv.a = pow(uv.a, u_alpha_pow);
