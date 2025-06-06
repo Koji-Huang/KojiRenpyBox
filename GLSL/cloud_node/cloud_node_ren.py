@@ -53,7 +53,7 @@ renpy.register_shader("cloud_node_line",
         vec4 line = u_line;
         vec2 uv = v_uv;
         float val = 0.0;
-        float dis = abs(line[2] * uv.x - uv.y + line[3]) / sqrt(1 + pow(line[2], 2));
+        float dis = abs(line[2] * uv.x - uv.y + line[3]) / sqrt(1.0 + pow(line[2], 2));
         if(dis < u_width) val = 1.0 - dis / u_width;
         gl_FragColor = u_color * val;
     """
