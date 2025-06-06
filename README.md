@@ -137,3 +137,7 @@ Video Collection: https://space.bilibili.com/1146352855/lists/5362589?type=seaso
 ### 1. [小白都能看懂的 CDD 教程](.\Markdown\小白都能看懂的 Renpy CDD 教程.md)
 
 >   自己写给萌新群友康的
+
+### 2. [将任意目录添加到 Renpy 中作为游戏资源](.\Markdown\将任意目录添加到 Renpy 中作为游戏资源.md)
+
+>   将外部目录放到 Renpy 里加载的一种方法
