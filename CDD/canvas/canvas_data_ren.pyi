@@ -129,4 +129,4 @@ class CircleInfo:
         degree: tuple[float, float] = (0, pi*2), 
         round: tuple = 0, 
         texture: TextureInfo=None
-        ):..
+        ):...
