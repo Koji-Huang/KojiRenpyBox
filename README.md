@@ -141,3 +141,5 @@ Video Collection: https://space.bilibili.com/1146352855/lists/5362589?type=seaso
 ### 2. [将任意目录添加到 Renpy 中作为游戏资源](.\Markdown\将任意目录添加到 Renpy 中作为游戏资源.md)
 
 >   将外部目录放到 Renpy 里加载的一种方法
+
+### 3. [自定义 Live2D 组件动作的一些思路](.\Markdown\自定义 Live2D 组件动作的一些思路.md)
