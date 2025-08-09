@@ -136,10 +136,9 @@ Video Collection: https://space.bilibili.com/1146352855/lists/5362589?type=seaso
 
 ### 1. [小白都能看懂的 CDD 教程](.\Markdown\小白都能看懂的 Renpy CDD 教程.md)
 
->   自己写给萌新群友康的
-
 ### 2. [将任意目录添加到 Renpy 中作为游戏资源](.\Markdown\将任意目录添加到 Renpy 中作为游戏资源.md)
 
->   将外部目录放到 Renpy 里加载的一种方法
-
 ### 3. [自定义 Live2D 组件动作的一些思路](.\Markdown\自定义 Live2D 组件动作的一些思路.md)
+
+### [4. 无视 UI 控件 ( 指定图层 ) 截图的一个方法](.\Markdown\无视 UI 控件 ( 指定图层 ) 截图的一个方法.md)
+
