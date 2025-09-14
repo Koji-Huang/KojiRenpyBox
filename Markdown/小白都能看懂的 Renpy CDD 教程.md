@@ -190,7 +190,7 @@ limitations under the License.
 >    `st, at`:
 >
 >    >    `st` 在组件被 `add, show` 时都会从`0`开始计数, 它与 `at` 的不同需要一个小小的例子来展示:
->>
+>    >    
 >    >    ```python
 >    >    image a = A_Displayable() # 注意这里的 A_Displayable 指的是任意一个可视化组件, 本身没有这个类型
 >    >    
@@ -206,8 +206,7 @@ limitations under the License.
 >    >    ```
 >    >
 >    >    大概是这样的关系, 如果你写的是一个 `UI` 控件的话, 大概率是不需要理会 `at` 参数的
->    >
->    >    ---
+  ---
 >    
 >    `render` 函数的返回值:
 >
