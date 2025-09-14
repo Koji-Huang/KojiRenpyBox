@@ -1,4 +1,4 @@
-# [canvas (圆, 长方形, 直线)](./canvas)
+# [canvas (圆, 长方形, 直线)](./CDD/canvas)
 
 <img src=".\sample_capture\canvas.png" height="150" align="right" />
 
@@ -14,7 +14,18 @@
 
 <br></br>
 
-# [dammu (弹幕组件)](./dammu)
+# [circle_menu (圆盘菜单)](./CDD/circle_menu)
+
+<img src=".\sample_capture\circle_menu.png" height="150" align="right" />
+
+圆盘菜单组件, 让组件在圆盘上进行布局并提供了基础交互
+
+画面中的圆环, 选中效果使用了 canvas 组件进行绘制
+
+<br></br>
+<br></br>
+
+# [dammu (弹幕组件)](./CDD/dammu)
 
 <img src=".\sample_capture\dammu.png" height="150" align="right" />
 
@@ -25,7 +36,7 @@
 <br></br>
 <br></br>
 
-# [press_buttom (按下效果)](./press_button)
+# [press_buttom (按下效果)](./CDD/press_button)
 
    在 Imagebutton 的基础上加上了一个自定义的 press 属性用来相应鼠标按下的图片
 
