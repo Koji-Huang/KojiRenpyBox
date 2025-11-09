@@ -1,0 +1,218 @@
+{
+    "Color": {
+        "Dark":  [0.0, 0.0, 0.0, 0.5, 0.5],
+        "Light": [1.0, 1.0, 1.0, 0.5, 0.5],
+        "Clear": [0.0, 0.0, 0.0, 0.0, 0.0],
+        "Black": [0.0, 0.0, 0.0, 1.0, 1.0],
+        "White": [1.0, 1.0, 1.0, 1.0, 1.0],
+        "Cyan":  [0.0, 1.0, 1.0, 1.0, 1.0],
+        "Green": [0.0, 1.0, 0.0, 1.0, 1.0],
+        "Blue":  [0.2, 0.6, 0.9, 1.0, 1.0],
+        "Gray":  [0.5, 0.5, 0.5, 1.0, 1.0]
+    },
+
+    "Theme": {
+        "Default": {
+            "background_color": {
+                "name": "Dark", 
+                "a": 0.5
+            },
+            "text_color": {
+                "name": "White",
+                "a": 0.8
+            },
+            "text_background_color": "Dark",
+            "mark_notice": "White",
+            "mark_color_1": "Dark",
+            "mark_color_2": {
+                "name": "Gray",
+                "a": 0.5,
+                "blend": 0.5
+            },
+            "mark_background_color_1": {
+                "name": "Black",
+                "a": 0.7,
+                "blend": 0.7
+            },
+            "mark_background_color_2": {
+                "name": "Black",
+                "a": 0.75,
+                "blend": 0.75
+            },
+
+            "menu_background_color": {
+                "name": "White",
+                "a": 0.2,
+                "blend": 0.7
+            }
+        },
+        "Cyan": {
+            "background_color": [0.5, 1.0, 1.0, 1.0, 0.2],
+            "text_color": "Cyan",
+            "text_background_color": "Dark",
+            "mark_notice": [0.7, 1.0, 1.0, 1.0, 0.5],
+            "mark_color_1": {
+                "name": "White",
+                "a": 0.25,
+                "blend": 0.25
+            },
+            "mark_color_2": {
+                "name": "White",
+                "a": 0.25,
+                "blend": 0.25
+            },
+            "mark_background_color_1": {
+                "name": "Black",
+                "a": 0.8,
+                "blend": 0.8
+            },
+            "mark_background_color_2": {
+                "name": "Black",
+                "a": 0.8,
+                "blend": 0.8
+            },
+
+            "menu_background_color": {
+                "name": "Cyan",
+                "a": 0.2,
+                "blend": 0.8
+            }
+        },
+        "Clear": {
+            "background_color": "Clear",
+            "text_color": {
+                "name": "White",
+                "a": 0.75,
+                "blend": 0.5
+            },
+            "text_background_color": {
+                "name": "Black",
+                "a": 0.1,
+                "blend": 0.1
+            },
+            "mark_notice": "Clear",
+            "mark_color_1": "Clear",
+            "mark_color_2": "Clear",
+            "mark_background_color_1": {
+                "name": "Black",
+                "a": 0.3,
+                "blend": 0.7
+            },
+            "mark_background_color_2": {
+                "name": "Black",
+                "a": 0.3,
+                "blend": 0.7
+            },
+            "menu_background_color": {
+                "name": "Black",
+                "a": 1.0,
+                "blend": 0.3
+            }
+            
+        },
+        "Dark": {
+            "background_color": "Dark",
+            "text_color": {
+                "name": "White",
+                "a": 0.5,
+                "blend": 0.5
+            },
+            "text_background_color": "Dark",
+            "mark_notice": {
+                "name": "White",
+                "blend": 0.25
+            },
+            "mark_color_1": "Dark",
+            "mark_color_2": {
+                "name": "Gray",
+                "a": 0.15,
+                "blend": 0.15
+            },
+            "mark_background_color_1": {
+                "name": "Black",
+                "a": 0.7,
+                "blend": 0.7
+            },
+            "mark_background_color_2": {
+                "name": "Black",
+                "a": 0.7,
+                "blend": 0.7
+            },
+            "menu_background_color": {
+                "name": "Black",
+                "a": 0.2,
+                "blend": 0.7
+            }
+        },
+        "Light": {
+            "background_color": "Light",
+            "text_color": "White",
+            "text_background_color": {
+                "name": "White",
+                "a": 0.2,
+                "blend": 0.4
+            },
+            "mark_notice": "Dark",
+            "mark_color_1": "Light",
+            "mark_color_2": {
+                "name": "White",
+                "a": 0.5,
+                "blend": 0.5
+            },
+            "mark_background_color_1": {
+                "name": "White",
+                "a": 0.25,
+                "blend": 0.5
+            },
+            "mark_background_color_2": {
+                "name": "White",
+                "a": 0.25,
+                "blend": 0.5
+            },
+            "menu_background_color": {
+                "name": "Black",
+                "a": 0.2,
+                "blend": 0.7
+            }
+        }
+    },
+    "ColorSet": {
+        "Debugger": {
+            "Clear": {
+                "background_color": "Clear",
+                "text_color": {
+                    "name": "Cyan",
+                    "a": 0.5,
+                    "blend": 0.5
+                },
+                "text_background_color": {
+                    "name": "Black",
+                    "a": 0.1,
+                    "blend": 0.1
+                }
+            },
+            "Dark": {
+                "background_color": "Dark",
+                "text_color": [0.0, 0.5, 0.5, 1.0, 1.0],
+                "text_background_color": "Dark"
+            },
+            "Light": {
+                "background_color": "Light",
+                "text_color": [0.0, 0.5, 0.5, 1.0, 1.0],
+                "text_background_color": {
+                    "name": "White",
+                    "a": 0.1,
+                    "blend": 0.0
+                }
+            }
+        },
+        "Mark": {
+            "Dark": {
+                "mark_color_1": "Dark",
+                "mark_color_2": "Dark",
+                "mark_background_color_1": "Dark",
+                "mark_background_color_2": "Dark"
+            }
+        }
+    }
+}
