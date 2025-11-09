@@ -1,3 +1,25 @@
+# [render_debugger (界面Debugger工具)](./CDD/render_debugger)
+
+<img src=".\sample_capture\render_debugger.png" height="150" align="right" />
+
+一个供开发者在 Screen 里面查看组件渲染位置与大小的工具
+
+原理很简单: Render.children, 没什么好讲的
+
+交互:
+
+>   **~** 键打开界面
+>
+>   打开界面后 **~** 键打开界面菜单
+>
+>   ESC** 键退出界面
+>
+>   **右键** 组件可以隐藏\展开子组件
+
+   演示视频: https://www.bilibili.com/video/BV1WvkXBtEkj/
+
+<br></br>
+
 # [canvas (圆, 长方形, 直线)](./CDD/canvas)
 
 <img src=".\sample_capture\canvas.png" height="150" align="right" />
