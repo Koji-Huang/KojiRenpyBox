@@ -36,3 +36,6 @@ Bilibili 账号: https://space.bilibili.com/1146352855
 
 <img src=".\sample_capture\perspective.png" width="600" align="left" />
 
+[trialing_glitch (拖尾损坏效果)](./GLSL/trailing_glitch)
+
+<img src=".\sample_capture\trailing_glitch.png" width="600" align="left" />

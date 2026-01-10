@@ -10,7 +10,6 @@
 <br></br>
 <br></br>
 
-
 # [glitch (画面撕裂效果)](./GLSL/glitch)
 
 <img src=".\sample_capture\glitch.png" height="150" align="right" />
@@ -19,6 +18,19 @@
 
    The image distortion effect of a worn-out TV.
    written with a transform and a function applied to CDD
+
+<br></br>
+<br></br>
+
+# [trailing_glitch (拖尾画面撕裂效果)](./GLSL/trailing_glitch)
+
+<img src=".\sample_capture\trailing_glitch.png" height="150" align="right" />
+
+   带有拖尾的画面形变效果, 使用 transform 进行调用
+
+   A glitch effect with trailing. Transform use only.
+
+   演示视频: https://www.bilibili.com/video/BV1k76DB5EpM
 
 <br></br>
 <br></br>
@@ -72,10 +84,10 @@
 <img src=".\sample_capture\uv_frame.png" height="150"  align="right" />
 
    根据渲染好的 UV 图像来渲染图片的位置
-   
+
    Use rendered UV to render image
 
    演示视频: https://www.bilibili.com/video/BV1tLjBzyEGE/
-   
+
 <br></br>
 <br></br>
