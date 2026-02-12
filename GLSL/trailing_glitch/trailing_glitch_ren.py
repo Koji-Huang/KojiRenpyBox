@@ -278,7 +278,7 @@ renpy.register_sl_displayable("trailing_glitch", TrailingGlitch, "", 1
 """renpy
 
 # 定义 transform
-transform trailing_glitch(weight, color_weight, angle):
+transform trailing_glitch(weight=0.5, color_weight=0.5, angle=0):
     mesh True
     shader ['trailing_glitch']
     u_weight weight

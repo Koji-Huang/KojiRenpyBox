@@ -30,7 +30,7 @@ class RectColor(renpy.Displayable):
         self.model.shader("rect_color")
 
         if bool(color) is False:
-            color = ("#fff", "#0000", "#fff", "0000")
+            color = ("#fff", "#0000", "#fff", "#0000")
 
         self.model.uniform("u_left_top", Color(color[0]).rgba)
         self.model.uniform("u_right_top", Color(color[1]).rgba)

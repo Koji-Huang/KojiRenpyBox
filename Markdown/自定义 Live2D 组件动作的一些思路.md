@@ -1,6 +1,8 @@
 # 自定义 `Live2D` 组件动作的一些思路
 
----
+这个文档介绍了 Renpy Live2D 系统的基础框架与调用方案
+我这里有一个单独的仓库, 这个仓库里存着一个很好的 Sample, 如果这对你有帮助的话可以参考参考
+https://github.com/Koji-Huang/RenpyLive2DTraceSample
 
 `Renpy` 官方的 `Live2D` 组件提供了 `blend_parameter` 来混合单个动作却没有提供一个自定义混合动作的接口, 很巧的是我要用到了, 在吃了几个晚上源码的史后(以前受人委托研究过这个模块, 但当时并没有成功), 就有了这篇文章
 

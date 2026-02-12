@@ -174,7 +174,7 @@ class SingleUV_Frame(renpy.Displayable):
 # 将多个 UV 作用到 image 上
 # 注意 load_cache 参数, 这个参数为 True 时会强制加载好所有的 uv 来保证后面的动画流畅
 class AnimaUV_Frame(renpy.Displayable):
-    def __init__(self, image, uv_files, anima_loop_time=1.0, sample_dis=0.003, sample_level=3.0, alpha_pow=1, load_cache=True, render_image_size=True, anisotropic=True, blend_alpha=False,  only_uv=False):
+    def __init__(self, image, uv_files, anima_loop_time, sample_dis=0.003, sample_level=3.0, alpha_pow=1, load_cache=True, render_image_size=True, anisotropic=True, blend_alpha=False,  only_uv=False):
         super().__init__()
         self.image = renpy.displayable(image)
         self.time = anima_loop_time

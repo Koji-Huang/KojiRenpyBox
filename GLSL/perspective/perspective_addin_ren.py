@@ -91,10 +91,24 @@ def format_center(center):
         raise Exception("CenterValueFormatWrong\ntuple[tuple[float, float]] -> len 2 | tuple[float, ...] len in [2, 4]\n", center)
 
 
-# 重置参数插件
-class ResetArgAddin:
-    def __init__(self):
+class BaseAddin:
+    def __init__(self, ):
         pass
+    
+    @abstractmethod
+    def event(self, obj, ev, x, y, st):
+        pass
+
+    @abstractmethod
+    def render(self, obj, w, h, st, at):
+        pass
+
+
+
+# 重置参数插件
+class ResetArgAddin(BaseAddin):
+    def __init__(self):
+        super().__init__()
 
     def event(self, obj, ev, x, y, st):
         pass
@@ -104,8 +118,9 @@ class ResetArgAddin:
 
 
 # 根据鼠标位置形变 Center 插件
-class CenterMouseTrackAddin:
+class CenterMouseTrackAddin(BaseAddin):
     def __init__(self, center=(1.0, 1.0), catch_fullscreen=False, mode=2):
+        super().__init__()
         self.center = format_center(center)
         self.size = None
         self.pos = None
@@ -134,8 +149,9 @@ class CenterMouseTrackAddin:
                     
 
 # 根据鼠标位置形变 Area 插件
-class AreaMouseTrackAddin:
+class AreaMouseTrackAddin(BaseAddin):
     def __init__(self, area=(1.0, 1.0, 1.0, 1.0), catch_fullscreen=False, mode=2):
+        super().__init__()
         self.area = format_area(area)
         self.size = None
         self.pos = None
@@ -167,8 +183,9 @@ class AreaMouseTrackAddin:
 
 
 # 根据鼠标滚轮形变 Intensity 插件
-class IntensityAddin:
+class IntensityAddin(BaseAddin):
     def __init__(self, intensity = 0.1, count=10, limit=(0.1, 1.2), speed=10, mode=3):
+        super().__init__()
         self.intensity = intensity
         self.count = count
         self.mode = mode
@@ -214,8 +231,9 @@ class IntensityAddin:
 
 
 # 根据鼠标滚轮形变 Area 插件
-class ScaleAreaAddin:
-    def __init__(self, area=0.1, count=0, mode=0, speed=10, limit_count = (-10, 2)):
+class ScaleAreaAddin(BaseAddin):
+    def __init__(self, area=0.1, count=0, limit_count = (-10, 2), speed=10, mode=0):
+        super().__init__()
         self.count = count
         self.speed = speed
 
@@ -266,8 +284,9 @@ class ScaleAreaAddin:
 
 
 # 参数限制插件 ( Not Debugged )
-class ArgsLimitAddin:
+class ArgsLimitAddin(BaseAddin):
     def __init__(self, area_check=(1.0, 1.0, 1.0, 1.0), center_check=((0.0, 1.0), (0.0, 1.0)), intensity_range=(0.0, 1.2)):
+        super().__init__()
         self.area_check = format_area(area_check) if bool(area_check) else False
         self.center_check = format_center(center_check) if bool(center_check) else False
         self.intensity_check = intensity_check

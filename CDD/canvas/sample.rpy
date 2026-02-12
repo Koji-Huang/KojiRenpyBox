@@ -30,7 +30,7 @@ screen canvas_displayable:
 
                 rect rect_area (100, 240, 1400, 50) round 25 texture canvas_texture.__copy__(blend=0.3, alpha=0.0)
             
-                line start_pos(0, 40) end_pos(1920, 40) texture canvas_texture.__copy__(blend=0.5, alpha=0.0)
+                line start_pos (0, 40) end_pos (1920, 40) texture canvas_texture.__copy__(blend=0.5, alpha=0.0)
 
                 text "{size=15}rect (0, 0, 1600, 300)"
                 text "{size=15}{color=#000}circle (0, 150) r=40\ncircle (0, 150) r=80\ncircle(0, 150) r=120 degree(0.5, 2)\ncircle(0, 150) r=160" pos (5, 140)
