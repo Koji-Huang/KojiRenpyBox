@@ -1,9 +1,6 @@
-# 小白都能看懂的 `Renpy CDD `教程
+# Renpy CDD 相关组件的解析与编写教程
 
----
 
-```python
-'''
 
 Copyright 2025.6.1 Koji-Huang(koji233@163.com)
 
@@ -19,8 +16,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-'''
-```
+---
+
+这个教程最开始的想法虽然说是为了小白都能看懂, 写着写着才发现表达的方法完全不小白, 但却是我对 Renpy CDD 系统的理解的浓缩
+
+有耐心看完这篇 Markdown, 你也可以写出和我仓库里一样的 CDD
 
 ---
 

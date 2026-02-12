@@ -78,6 +78,20 @@ default_config = {
 }
 
 
+# 圆盘菜单默认选项切换键
+default_key = {
+    
+    # 键盘下一个按钮的按键映射
+    "next": (pygame.K_RIGHT, pygame.K_DOWN, pygame.K_d, pygame.K_s, pygame.K_KP_2, pygame.K_KP_6),
+    
+    # 键盘上一个按钮的按键映射
+    "last": (pygame.K_LEFT, pygame.K_UP, pygame.K_a, pygame.K_w, pygame.K_4, pygame.K_8),
+    
+    # 激活选项的键盘按键
+    "active": (pygame.K_KP_ENTER, pygame.K_SPACE)
+}
+
+
 def do_callback(key, dic, *args, **kwargs):
     callback = dic.get(key, None)
     if callback is None:
@@ -132,11 +146,12 @@ class CircleMenu(CircleLayout):
             mouse_check_r: tuple[int, int] = (160, 300), 
             callbacks: dict={}, 
             config: dict={}, 
+            key: dict={},
             *args, **kwargs):
         """
         :param mouse_check_r: 鼠标移动事件生效的半径
         :param callbacks: 回调函数的字典   
-        :param ban: 配置项的字典
+        :param config: 配置项的字典
         """
         super().__init__(offsets_angle, r, *args, **kwargs)
 
@@ -148,15 +163,12 @@ class CircleMenu(CircleLayout):
         self.config = default_config.copy()
         self.config.update(config)
 
+        self.key = default_key.copy()
+        self.key.update(key)
+
+
         # 当前选中的项的下标, 为 None 时则为不选中
         self.selected = None
-
-        # 键盘下一个按钮的按键映射
-        self.keyboard_next = (pygame.K_RIGHT, pygame.K_DOWN, pygame.K_d, pygame.K_s, pygame.K_KP_2, pygame.K_KP_6)
-        # 键盘上一个按钮的按键映射
-        self.keyboard_last = (pygame.K_LEFT, pygame.K_UP, pygame.K_a, pygame.K_w, pygame.K_4, pygame.K_8)
-        # 激活选项的键盘按键
-        self.keyboard_active = (pygame.K_KP_ENTER, pygame.K_SPACE)
 
         # 是否触发 [换到上一个/换到下一个]
         self.select_state = _list_type()
@@ -246,12 +258,12 @@ class CircleMenu(CircleLayout):
         self.select_state[0] = False
         self.select_state[1] = False
 
-        for i in self.keyboard_last:
+        for i in self.key['last']:
             if keymap[i]:
                 self.select_state[0] = True
                 break
 
-        for i in self.keyboard_next:
+        for i in self.key['next']:
             if keymap[i]:
                 self.select_state[1] = True
                 break
@@ -261,7 +273,7 @@ class CircleMenu(CircleLayout):
             return False
         if ev.type == pygame.MOUSEBUTTONUP and ev.button == 1 and self.config['mouse_active']:
             return True
-        if ev.type == pygame.KEYUP and ev.key in self.keyboard_active and self.config['keyboard_active']:
+        if ev.type == pygame.KEYUP and ev.key in self.key['active'] and self.config['keyboard_active']:
             return True
         callback_result = do_callback('is_active', self.callbacks, self, ev, x, y, st)
         return callback_result if callback_result is not None else False

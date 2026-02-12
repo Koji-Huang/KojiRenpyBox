@@ -72,7 +72,6 @@ class DammuDisplay(renpy.Displayable):
         return len(dammu.text) * self.each_char_speed + self.dammu_basic_speed
 
     def event(self, ev, x, y, st):
-        # # 每 0.1 秒刷新一次
         renpy.timeout(0.015)
         self.now_st = st
         renpy.display.render.redraw(self, 0)

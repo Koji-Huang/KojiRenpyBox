@@ -77,7 +77,6 @@ screen canvas_menu:
         info menu_bg 
         yalign 0.5
         xalign 0.5 
-        # xpos 90 
         xysize(1600, 150)
 
     hbox:
