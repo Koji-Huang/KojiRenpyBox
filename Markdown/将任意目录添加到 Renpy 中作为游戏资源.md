@@ -8,19 +8,47 @@
 >   在打包好游戏内 `renpy` 文件夹下的 `loader.py` 里添加如下代码 ( 也就是修改 `SDK` )
 >
 >   ```python
+>	
+>   ######################################
+>   # 魔改处, outer 为需要添加的外部文件目录
+>   
+>   if renpy.android:
+>       outer = "/storage/emulated/0/MAS/"
+>   else:
+>       outer = "D:/6_Project/Others/outer/"
+>   
+>   
+>   outer_files = list()
+>   
 >   def scan_outer_resource(add, seen):
+>       
+>       files = game_files
+>       loaded_outer = list()
 >   
->     files = game_files
+>       print("Outer\"", outer, "\"Scaned:")
+>       
+>       for each in walkdir(outer):
+>           add(outer, each, loaded_outer, seen)
+>           print("    ", outer, " - ", each)
 >   
->     outer = "xxx"
+>       files.extend(loaded_outer)
+>       
+>       for i in loaded_outer:
+>           outer_files.append(i[1])
 >   
->     for each in walkdir(outer):
->         add(outer, each, files, seen)
 >   
->   scandirfiles_callbacks.append(scan_outer_resource)
+>   def load_from_outer(name):
+>       name = name.replace(renpy.config.basedir + "\\", '')
+>       if name in outer_files:
+>           print("Try Load from outer: ", outer, name)
+>           return io.BufferedReader(RWopsIO(outer+name, "rb", name))
+>   
+>   
+>scandirfiles_callbacks.append(scan_outer_resource)
+>file_open_callbacks.append(load_from_outer)
 >   ```
 >
->   这部分代码应该添加在 `scandirfiles_callbacks` 被定义后( VS Code 随手一搜就知道了 ), `xxx` 为外部目录的路径
+>   这部分代码应该添加在 `file_open_callbacks` 被定义后( VS Code 随手一搜就知道了 ), `xxx` 为外部目录的路径
 >
 >   例如:
 >
@@ -44,6 +72,8 @@
 >   此时该文件夹下的所有内容都被 `Renpy` 扫描并存入了索引, `clone_script.rpy`也生成了`rpyc`缓存
 >
 >   此时 `resource` 文件夹中 `image` 的引用为 `image aaa = "image_aaa.png"` 而不是 `image aaa = "resource\image_aaa.png"`
+>   
+>    控制台会有加载文件对应的数据显示出来
 
 ## 原理
 
@@ -148,33 +178,13 @@
 >   >
 >   >   `scandirfiles_from_archives`: 检索归档文件 (`rpa`等) 的索引
 >
->   此外还有一个 `file_open_callbacks`, 这个 `callback` 是用于读取文件并返回读取后文件信息的回调函数, 也就是对各个文件读取的 `I` 接口, 返回的是字节流对象, 它也有对应的四个回调函数, 但因为上面的代码兼容其中的 `load_from_filesystem`, 所以不需要编写一个额外的 `callback` 了
->
->   *其实我一开始就是编写了一个 callback 来支持读取的, 但是在我调试半天一个 I\O 错误后发现问题不出在这里并且根本不用写这个回调的时候, 气笑了*
+>   所以相应的, 我们也需要编写一个自己的 `scandirfile callback` 来去获取指定外部文件的索引并存入到一个额外的列表里面来避免与现有的索引产生冲突
+>   
+>   *之前我尝试过只写一个新的 `scandir` 函数, 通过这个函数获取的文件信息来兼容 `load_from_filesystem`, 但是这个方案会导致一些文件无法被正常的访问, 具体原因过于久远已经不可溯, 文档里现在的代码其实一年前就有了但是我懒得改, 前不久有人找我的时候 Ctrl CV 发现行不通后我才决定修正一下这篇文档的错误*
 
-### 重新看源码
+### file_open_callbacks
 
->   ```python
->   # 定义函数
->   def scan_outer_resource(add, seen):
->   
->      # 定义 files 为 game_files 的引用
->      # 我们需要将外部资源载入到游戏资源索引里
->      files = game_files
->   
->      # 外部资源路径
->      outer = "xxx"
->   
->      # 获取外部资源下的所有子文件的路径
->      for each in walkdir(outer):
->   
->          # 将外部资源文件添加到 game_file 里
->          add(outer, each, files, seen)
->   
->   
->   # 向检索文件回调函数队列中添加我们定义的函数
->   scandirfiles_callbacks.append(scan_outer_resource)
->   ```
+>    `file_open_callbacks` 是用来传入文件名并检索索引中打开文件用的. 上面的四个 `scandirfiles` 也有对应的 `open_callbacks`. 由于我们上面的代码使用了自己的索引, 所以相应的也需要自己编写一个 `open_callbacks`, 需要注意的是, 虽然理论上我们返回一个 `open( xxx, "r")`的对象理论上也是可行的, 但是 `loader.py` 里面几乎全部都使用的是 `io.BufferedReader + RWopsIO` 的组合, 为了确保兼容我建议你也使用类似的写法.  
 
 ----
 
@@ -184,7 +194,7 @@
 >
 >   在安卓下该方法也可用, 也就是说, 对于安卓的 `Renpy` 应用, 我们可以把拓展的包体放置在游戏包体外的地方引用, 一开始就是有人找我想办法在安卓实现这个功能, 好在找出路子了 ( )
 >
->   虽说我这里说是固定, 但我们可以编写一个 `config` 什么的在 `loader.py` 里面读取来实现动态获取, 但需要注意的是, 载入包体的时间发生在引擎启动阶段, 进入游戏后不可修改 ( 不过 `Shift+R` 刷新缓存倒是可以, 总之就是让 `loader.py` 重新跑一遍的就行 ).
+>   虽说我这里说是固定, 但我们可以编写一个 `config` 文件什么的在 `loader.py` 里面读取来实现动态获取, 但需要注意的是, 载入包体的时间发生在引擎启动阶段, 进入游戏后再修改不会产生新的加载, 但是注意到 `Shift+R` 刷新缓存后整个系统会重新加载文件系统, 对应的我在源码里找到的函数为 `renpy.full_restart()`, 只需要这个函数就可以在不重新启动可执行程序的前提下重启游戏了
 >
 >   另外, 打包好的包体里的文件是拷贝自 `renpy-xxx-sdk\renpy` 里的, 如果你改动 `SDK` 里 `loader.py` 的源码的话, 可以省去每次打包后重新修改 `loader.py` 的时间, 但同时你使用此 `SDK` 运行, 生成的所有代码都会带有这个语句, 我自己为了测试这个代码新下载了一个 `Renpy` 和一整套的安卓套件 ( 心疼我的机场流量 )
 >

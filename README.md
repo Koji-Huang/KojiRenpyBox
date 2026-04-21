@@ -1,10 +1,10 @@
 # Koji Renpy Box
 
 这里是科基的个人 Renpy 组件仓库, 希望里面的组件能对你的开发提供一些帮助什么的
-对这些组件的使用有疑问或者希望我帮你写组件可以发邮件至 koji233@163.com
+对这些组件的使用有疑问或者希望我帮你写组件可以发邮件至 1447396418@qq.com
 
 Koji's Renpy Widget Repositories. Hope these widget can give you some help
-if there is some question or wish I write widget for you, send email to koji233@163.com
+if there is some question or wish I write widget for you, send email to 1447396418@qq.com
 
 Bilibili 账号: https://space.bilibili.com/1146352855
 视频合集: https://space.bilibili.com/1146352855/lists/5362589?type=season
@@ -68,6 +68,7 @@ Bilibili 账号: https://space.bilibili.com/1146352855
 
 [无视 UI 控件 ( 指定图层 ) 截图的一个方法](Markdown/无视%20UI%20控件%20(%20指定图层%20)%20截图的一个方法.md)
 
+[Cython 编译 Renpy 的 .py 脚本到 .pyd 的方案](Markdown/Cython%20编译%20Renpy%20的%20.py%20脚本到%20.pyd%20的方案.md)
 
 ---
 
