@@ -60,7 +60,7 @@ Bilibili 账号: https://space.bilibili.com/1146352855
 
 ## Markdown - 一些文章
 
-[Renpy CDD 相关组件的解析与编写教程](Markdown/Renpy%20CDD%20相关组件的解析与编写教程.md)
+[Renpy CDD 编写教程](Markdown/Renpy%20CDD%20编写教程)
 
 [将任意目录添加到 Renpy 中作为游戏资源](Markdown/将任意目录添加到%20Renpy%20中作为游戏资源.md)
 
