@@ -60,7 +60,7 @@ Bilibili 账号: https://space.bilibili.com/1146352855
 
 ## Markdown - 一些文章
 
-[Renpy CDD 编写教程](Markdown/Renpy%20CDD%20编写教程)
+[Renpy CDD 编写教程](Markdown/Renpy%20CDD%20编写教程/)
 
 [将任意目录添加到 Renpy 中作为游戏资源](Markdown/将任意目录添加到%20Renpy%20中作为游戏资源.md)
 
@@ -68,7 +68,7 @@ Bilibili 账号: https://space.bilibili.com/1146352855
 
 [无视 UI 控件 ( 指定图层 ) 截图的一个方法](Markdown/无视%20UI%20控件%20(%20指定图层%20)%20截图的一个方法.md)
 
-[Cython 编译 Renpy 的 .py 脚本到 .pyd 的方案](Markdown/Cython%20编译%20Renpy%20的%20.py%20脚本到%20.pyd%20的方案.md)
+[Cython 编译 Renpy Python 脚本到 .pyd 的方案](Markdown/Cython%20编译%20Renpy%20Python%20脚本到%20.pyd%20的方案)
 
 ---
 
