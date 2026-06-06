@@ -1,6 +1,6 @@
 '''
 
-Copyright 2024.10.30 Koji-Huang(1447396418@qq.com)
+Copyright 2024.10.30 Koji-Mio(kojimio@outlook.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

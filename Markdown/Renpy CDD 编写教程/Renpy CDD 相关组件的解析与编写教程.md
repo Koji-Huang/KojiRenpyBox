@@ -1,7 +1,7 @@
 # Renpy CDD 相关组件的解析与编写教程
 
 
->  Copyright 2025.6.1 Koji-Huang(koji233@163.com)
+>  Copyright 2025.6.1 Koji-Mio(kojimio@outlook.com)
 >  
 >  Licensed under the Apache License, Version 2.0 (the "License");
 >  you may not use this file except in compliance with the License.
